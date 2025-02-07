@@ -23,6 +23,13 @@ module.exports = {
         "react/jsx-indent-props": [2, 4],
         quotes: ["error", "double"],
         "arrow-body-style": ["error", "always"],
+        "react/self-closing-comp": [
+            "error",
+            {
+                component: true,
+                html: true,
+            },
+        ],
         indent: [2, 4],
         "react/jsx-filename-extension": [
             2,
