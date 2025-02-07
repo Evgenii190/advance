@@ -9,7 +9,8 @@
         "lint:ts": " eslint \"**/*.{ts,tsx}\"",
         "lint:ts:fix": " eslint \"**/*.{ts,tsx}\" --fix",
         "lint:scss": "stylelint \"src/**/*.{scss,sass}\"",
-        "lint:scss:fix": "stylelint \"src/**/*.{scss,sass}\" --fix"
+        "lint:scss:fix": "stylelint \"src/**/*.{scss,sass}\" --fix",
+        "unit": "jest --config ./config/jest/jest.config.ts"
     },
     "keywords": [],
     "author": "",
@@ -17,6 +18,8 @@
     "description": "",
     "devDependencies": {
         "@types/node": "^17.0.21",
+        "@babel/core": "^7.17.5",
+        "@babel/preset-env": "^7.16.11",
         "@types/webpack": "^5.28.0",
         "@types/webpack-dev-server": "^4.7.2",
         "@types/react": "^17.0.39",
@@ -25,8 +28,11 @@
         "@svgr/webpack": "^6.2.1",
         "@typescript-eslint/eslint-plugin": "^5.12.1",
         "@typescript-eslint/parser": "^5.12.1",
+        "@types/jest": "^27.4.1",
+        "@babel/preset-typescript": "^7.16.7",
         "html-webpack-plugin": "^5.5.0",
         "ts-loader": "^9.2.6",
+        "babel-loader": "^8.2.3",
         "ts-node": "^10.5.0",
         "typescript": "^4.5.5",
         "webpack": "^5.69.1",
@@ -46,7 +52,8 @@
         "eslint-plugin-react": "^7.29.2",
         "eslint-plugin-react-hooks": "^4.3.0",
         "stylelint": "^14.5.3",
-        "stylelint-config-standard-scss": "^3.0.0"
+        "stylelint-config-standard-scss": "^3.0.0",
+        "jest": "^27.5.1"
     },
     "dependencies": {
         "react": "^17.0.2",
