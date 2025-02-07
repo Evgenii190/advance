@@ -6,4 +6,5 @@ export default {
     moduleDirectories: ["node_modules"],
     testMatch: ["<rootDir>src/**/*(*.)@(spec|test).[tj]s?(x)"],
     rootDir: "../../",
+    modulePaths: ["<rootDir>src"],
 };
