@@ -22,7 +22,7 @@ module.exports = {
         "react/jsx-indent": [2, 4],
         "react/jsx-indent-props": [2, 4],
         quotes: ["error", "double"],
-        "arrow-body-style": ["error", "always"],
+        "arrow-body-style": ["off", "never"],
         "react/self-closing-comp": [
             "error",
             {
