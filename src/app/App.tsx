@@ -1,9 +1,9 @@
-import "./styles/index.scss";
 import { useTheme } from "app/providers/ThemeProvider";
 import classNames from "shared/lib/classNames/classNames";
 import { Navbar } from "widgets/Navbar";
 import { Sidebar } from "widgets/Sidebar";
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
+import { Modal } from "shared/ui/Modal/Modal";
 import { PageLoader } from "shared/ui/PageLoader/PageLoader";
 import { AppRouter } from "./providers/router";
 

@@ -5,12 +5,19 @@ import {
     ThemeContext,
 } from "../lib/ThemeContext";
 
-const defaultValue = (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
+interface ThemeProps {
+    initialTheme?: Theme;
+}
 
-const ThemeProvider: FC = ({ children }) => {
-    const [theme, setTheme] = useState<Theme>(defaultValue);
+const defaultValue =
+    (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT;
 
-    const defaultProps = useMemo(() => { return { theme, setTheme }; }, [theme]);
+const ThemeProvider: FC<ThemeProps> = ({ children, initialTheme }) => {
+    const [theme, setTheme] = useState<Theme>(initialTheme || defaultValue);
+
+    const defaultProps = useMemo(() => {
+        return { theme, setTheme };
+    }, [theme]);
     return (
         <ThemeContext.Provider value={defaultProps}>
             {children}
