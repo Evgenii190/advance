@@ -72,7 +72,7 @@ export const Modal = ({
                         [s.opened]: isOpen,
                         [s.closing]: isClosing,
                     },
-                    [className, s[theme]],
+                    [className, theme, "app_modal"],
                 )}
                 onClick={onCloseHandler}
             >
