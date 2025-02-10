@@ -3,7 +3,6 @@ import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { counterActions } from "../model/counterSlice";
 import { getCounterValue } from "../model/selectors/getCounterValue";
 
-
 export const Counter = () => {
     const dispatch = useDispatch();
     const value = useSelector(getCounterValue);
