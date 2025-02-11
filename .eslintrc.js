@@ -56,6 +56,7 @@ module.exports = {
         "no-unused-expressions": "off",
         "no-param-reassign": "off",
         "jsx-a11y/no-autofocus": "off",
+        "consistent-return": "off",
     },
     globals: {
         __IS_DEV__: true,

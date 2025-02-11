@@ -99,3 +99,11 @@ backgorundSquareXL.args = {
     size: ButtonSizes.XL,
     square: true,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+    children: "Button",
+    theme: ThemeButton.OUTLINE,
+    size: ButtonSizes.XL,
+    disabled: true,
+};

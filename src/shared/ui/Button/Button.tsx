@@ -30,6 +30,7 @@ export const Button: FC<ButtonProps> = (props) => {
         square = false,
         size = ButtonSizes.M,
         onClick,
+        disabled,
         ...otherProps
     } = props;
 
@@ -45,6 +46,7 @@ export const Button: FC<ButtonProps> = (props) => {
                 s[size],
             ])}
             type="button"
+            disabled={disabled}
             {...otherProps}
             onClick={onClick}
         >
