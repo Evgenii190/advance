@@ -5,6 +5,7 @@
         "selector-class-pattern": null,
         "no-empty-source": null,
         "no-eol-whitespace": null,
-        "no-duplicate-selectors": [null, { "disallowInList": true }]
+        "no-duplicate-selectors": [null, { "disallowInList": true }],
+        "color-function-notation": null
     }
 }

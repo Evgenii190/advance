@@ -55,6 +55,7 @@ module.exports = {
         "operator-linebreak": "off",
         "no-unused-expressions": "off",
         "no-param-reassign": "off",
+        "jsx-a11y/no-autofocus": "off",
     },
     globals: {
         __IS_DEV__: true,
