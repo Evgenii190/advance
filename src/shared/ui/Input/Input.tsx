@@ -10,11 +10,15 @@ import {
 import s from "./Input.module.scss";
 
 interface InputProps
-    extends Omit<InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> {
+    extends Omit<
+        InputHTMLAttributes<HTMLInputElement>,
+        "value" | "onChange" | "readOnly"
+    > {
     className?: string;
-    value?: string;
+    value?: string | number;
     onChange?: (value: string) => void;
     placeholder?: string;
+    readonly?: boolean;
 }
 
 export const Input = memo((props: InputProps) => {
@@ -25,6 +29,7 @@ export const Input = memo((props: InputProps) => {
         placeholder,
         type,
         autoFocus,
+        readonly,
         ...otherProps
     } = props;
     const [isFocussed, setIsFocused] = useState(false);
@@ -45,8 +50,9 @@ export const Input = memo((props: InputProps) => {
         setCaretPos(e.target.selectionStart || 0);
     };
 
+    const isCaretVisible = isFocussed && !readonly;
+
     useEffect(() => {
-        console.log("Input mounted");
         if (autoFocus) {
             setIsFocused(true);
             ref.current?.focus();
@@ -54,7 +60,11 @@ export const Input = memo((props: InputProps) => {
     }, [autoFocus]);
 
     return (
-        <div className={classNames(s.InputWrap, {}, [className])}>
+        <div
+            className={classNames(s.InputWrap, { [s.readonly]: readonly }, [
+                className,
+            ])}
+        >
             {placeholder && (
                 <div className={s.placeholder}>
                     {placeholder}
@@ -71,9 +81,10 @@ export const Input = memo((props: InputProps) => {
                     onBlur={onBlur}
                     onFocus={onFocus}
                     onSelect={onSelect}
+                    readOnly={readonly}
                     {...otherProps}
                 />
-                {isFocussed && (
+                {isCaretVisible && (
                     <span
                         className={s.caret}
                         style={{ left: `${9 * caretPos}px` }}
