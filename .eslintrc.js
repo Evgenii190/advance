@@ -58,7 +58,7 @@ module.exports = {
         "jsx-a11y/no-autofocus": "off",
         "consistent-return": "off",
         "implicit-arrow-linebreak": "off",
-        "ident": "off"
+        "indent": "off"
     },
     globals: {
         __IS_DEV__: true,
