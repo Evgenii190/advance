@@ -69,7 +69,7 @@ export const Modal = ({
         return () => {
             window.removeEventListener("keydown", onKeyDown);
             clearTimeout(timerRef.current);
-        };
+    };
     }, [isOpen, onKeyDown]);
 
     if (lazy && !isMounted) return null;

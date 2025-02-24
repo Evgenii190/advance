@@ -58,6 +58,7 @@ module.exports = {
         "consistent-return": "off",
         "implicit-arrow-linebreak": "off",
         indent: "off",
+        "no-undef": "off",
     },
     globals: {
         __IS_DEV__: true,

@@ -12,7 +12,7 @@ export default {
 } as ComponentMeta<typeof AboutPage>;
 
 const Template: ComponentStory<typeof AboutPage> = (args) => {
-    return <AboutPage {...(args as object)} />;
+    return <AboutPage />;
 };
 
 export const light = Template.bind({});

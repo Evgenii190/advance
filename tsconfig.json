@@ -5,6 +5,7 @@
         "module": "ESNext",
         "target": "es5",
         "jsx": "react-jsx",
+        "strict": true,
         "allowJs": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
@@ -17,8 +18,9 @@
     "include": [
         "./config/jest/setupTests.ts",
         "./src/**/*.ts",
-        "./**/*.tsx"
-, "src/entities/Counter/ui/Counter.test.tsx"    ],
+        "./**/*.tsx",
+        "src/entities/Counter/ui/Counter.test.tsx"
+    ],
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"

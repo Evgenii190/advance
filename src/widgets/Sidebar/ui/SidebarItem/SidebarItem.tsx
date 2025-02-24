@@ -6,7 +6,7 @@ import { memo } from "react";
 import s from "./SidebarItem.module.scss";
 
 interface SidebarItemProps {
-    item?: SideBarItemType;
+    item: SideBarItemType;
     collapsed?: boolean;
 }
 

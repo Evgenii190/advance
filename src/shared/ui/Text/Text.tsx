@@ -13,7 +13,12 @@ interface TextProps {
     theme?: TextTheme;
 }
 
-export const Text = ({ className, title, text, theme }: TextProps) => {
+export const Text = ({
+    className,
+    title,
+    text,
+    theme = TextTheme.PRIMARY,
+}: TextProps) => {
     return (
         <div className={classNames(s.Text, { [s[theme]]: theme }, [className])}>
             {title && <h2 className={s.title}>{title}</h2>}
