@@ -30,7 +30,6 @@ module.exports = {
                 html: true,
             },
         ],
-        indent: [2, 4],
         "react/jsx-filename-extension": [
             2,
             { extensions: [".js", ".jsx", ".tsx"] },
@@ -58,9 +57,10 @@ module.exports = {
         "jsx-a11y/no-autofocus": "off",
         "consistent-return": "off",
         "implicit-arrow-linebreak": "off",
-        "indent": "off"
+        indent: "off",
     },
     globals: {
         __IS_DEV__: true,
+        __API__: true,
     },
 };
