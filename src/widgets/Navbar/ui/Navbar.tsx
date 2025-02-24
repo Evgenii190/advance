@@ -2,7 +2,7 @@ import classNames from "shared/lib/classNames/classNames";
 import { Button, ThemeButton } from "shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
 import { LoginModal } from "features/AuthByUsername";
-import { useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserAuthData, userActions } from "entities/User";
 import s from "./Navbar.module.scss";
@@ -11,7 +11,7 @@ interface NavbarProps {
     className?: string;
 }
 
-export const Navbar = ({ className }: NavbarProps) => {
+export const Navbar = memo(({ className }: NavbarProps) => {
     const { t } = useTranslation();
     const dispatch = useDispatch();
 
@@ -30,28 +30,32 @@ export const Navbar = ({ className }: NavbarProps) => {
         dispatch(userActions.logout());
     };
 
-    return (
-        <div className={classNames(s.navbar, {}, [className])}>
-            {!authData ? (
+    if (authData) {
+        return (
+            <div className={classNames(s.navbar, {}, [className])}>
                 <Button
-                    className={s.links}
-                    onClick={onShowModal}
                     theme={ThemeButton.BACKGRAUND}
-                >
-                    {t("Войти")}
-                </Button>
-            ) : (
-                <Button
                     className={s.links}
                     onClick={onLogout}
-                    theme={ThemeButton.BACKGRAUND}
                 >
                     {t("Выйти")}
                 </Button>
-            )}
+            </div>
+        );
+    }
+
+    return (
+        <div className={classNames(s.navbar, {}, [className])}>
+            <Button
+                className={s.links}
+                onClick={onShowModal}
+                theme={ThemeButton.BACKGRAUND}
+            >
+                {t("Войти")}
+            </Button>
             {isLoginModalOpen && (
                 <LoginModal isOpen={isLoginModalOpen} onClose={onCloseModal} />
             )}
         </div>
     );
-};
+});
