@@ -57,6 +57,8 @@ module.exports = {
         "no-param-reassign": "off",
         "jsx-a11y/no-autofocus": "off",
         "consistent-return": "off",
+        "implicit-arrow-linebreak": "off",
+        "ident": "off"
     },
     globals: {
         __IS_DEV__: true,
