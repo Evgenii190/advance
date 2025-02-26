@@ -20,6 +20,8 @@ import {
     getProfileReadonly,
     getProfileForm,
 } from "entities/Profile";
+import { getProfileValidateErrors } from "entities/Profile/model/selectors/getProfileValidateErrors";
+import { Text, TextTheme } from "shared/ui/Text/Text";
 import { Country } from "entities/Country";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
@@ -40,9 +42,12 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const isLoading = useSelector(getProfileIsLoading);
     const error = useSelector(getProfileError);
     const readonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getProfileValidateErrors);
 
     useEffect(() => {
-        dispatch(fetchProfileData());
+        if (__PROJECT__ !== "storybook") {
+            dispatch(fetchProfileData());
+        }
     }, [dispatch]);
 
     const onChangeFirstname = useCallback(
@@ -108,6 +113,14 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(s.ProfilePage, {}, [className])}>
                 <ProfilePageHeader />
+                {validateErrors?.length &&
+                    validateErrors.map((error) => (
+                        <Text
+                            key={error}
+                            theme={TextTheme.ERROR}
+                            text={error}
+                        />
+                    ))}
                 <ProfileCard
                     data={data}
                     isLoading={isLoading}

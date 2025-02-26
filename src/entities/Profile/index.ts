@@ -8,6 +8,7 @@ import { getProfileIsLoading } from "./model/selectors/getProfileIsLoading";
 import { getProfileReadonly } from "./model/selectors/getProfileReadonly";
 import { getProfileForm } from "./model/selectors/getProfileForm";
 import { updateProfileData } from "./model/services/updateProfileData";
+import { validateProfileData } from "./model/services/validateProfileData";
 
 export {
     Profile,
@@ -22,4 +23,5 @@ export {
     getProfileReadonly,
     getProfileForm,
     updateProfileData,
+    validateProfileData,
 };
