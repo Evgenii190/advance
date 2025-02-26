@@ -59,6 +59,8 @@ module.exports = {
         "implicit-arrow-linebreak": "off",
         indent: "off",
         "no-undef": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "react/no-array-index-key": "off",
     },
     globals: {
         __IS_DEV__: true,

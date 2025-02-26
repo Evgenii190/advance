@@ -6,6 +6,7 @@
         "no-empty-source": null,
         "no-eol-whitespace": null,
         "no-duplicate-selectors": [null, { "disallowInList": true }],
-        "color-function-notation": null
+        "color-function-notation": null,
+        "declaration-colon-newline-after": null
     }
 }
