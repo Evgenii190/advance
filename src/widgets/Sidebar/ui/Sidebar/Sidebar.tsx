@@ -3,7 +3,8 @@ import { memo, useState } from "react";
 import { ThemeSwitcher } from "shared/ui/ThemeSwitcher";
 import { LangSwitcher } from "shared/ui/LangSwitcher/LangSwitcher";
 import { Button, ButtonSizes, ThemeButton } from "shared/ui/Button/Button";
-import { SidebarItemsList } from "../../model/items";
+import { getSidebarItems } from "widgets/Sidebar/model/selectors/getSidebarItems";
+import { useSelector } from "react-redux";
 import { SidebarItem } from "../SidebarItem/SidebarItem";
 import s from "./Sidebar.module.scss";
 
@@ -19,6 +20,8 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             return !prev;
         });
     };
+
+    const SidebarItemsList = useSelector(getSidebarItems);
 
     return (
         <div
