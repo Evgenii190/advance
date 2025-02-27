@@ -23,6 +23,8 @@ import {
 import { getProfileValidateErrors } from "entities/Profile/model/selectors/getProfileValidateErrors";
 import { Text, TextTheme } from "shared/ui/Text/Text";
 import { Country } from "entities/Country";
+import { useParams } from "react-router-dom";
+import { useInitialEffect } from "shared/lib/hooks/useInitialEffect";
 import { ProfilePageHeader } from "./ProfilePageHeader/ProfilePageHeader";
 
 import s from "./ProfilePage.module.scss";
@@ -44,11 +46,13 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const readonly = useSelector(getProfileReadonly);
     const validateErrors = useSelector(getProfileValidateErrors);
 
-    useEffect(() => {
-        if (__PROJECT__ !== "storybook") {
-            dispatch(fetchProfileData());
+    const { id } = useParams<string>();
+
+    useInitialEffect(() => {
+        if (id) {
+            dispatch(fetchProfileData(id));
         }
-    }, [dispatch]);
+    });
 
     const onChangeFirstname = useCallback(
         (value: string) => {

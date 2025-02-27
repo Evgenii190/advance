@@ -15,6 +15,16 @@ export const CommentList = ({
     comments,
     isLoading,
 }: CommentListProps) => {
+    if (isLoading) {
+        return (
+            <div className={classNames(s.CommentList, {}, [className])}>
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+                <CommentCard isLoading />
+            </div>
+        );
+    }
+
     return (
         <div className={classNames(s.CommentList, {}, [className])}>
             {comments?.length ? (

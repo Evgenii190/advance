@@ -1,5 +1,5 @@
 import classNames from "shared/lib/classNames/classNames";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { ArticleDetails } from "entities/Article";
 import { useParams } from "react-router-dom";
 import { Text } from "shared/ui/Text/Text";
@@ -15,6 +15,8 @@ import {
 } from "entities/Article/model/selectors/getArticleDetails";
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
+import { AddCommentForm } from "features/addCommentForm";
+import { addCommentForArticle } from "../../model/services/addCommentForArticle";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId";
 import {
     articleDetailsCommentsReducer,
@@ -42,6 +44,13 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         dispatch(fetchCommentsByArticleId(id));
     });
 
+    const onSendComment = useCallback(
+        (text: string) => {
+            dispatch(addCommentForArticle(text));
+        },
+        [dispatch],
+    );
+
     if (!id) {
         return (
             <div className={classNames(s.ArticleDetailsPage, {}, [className])}>
@@ -55,6 +64,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
             <div className={classNames(s.ArticleDetailsPage, {}, [className])}>
                 <ArticleDetails id={id} />
                 <Text className={s.commentTitle} title="Комментарии" />
+                <AddCommentForm onSendComment={onSendComment} />
                 <CommentList
                     comments={comments}
                     isLoading={commentsIsLoading}

@@ -1,5 +1,6 @@
 import { ArticleDetails } from "./ui/ArticleDetails/ArticleDetails";
 import { Article } from "./model/types/article";
 import { ArticleDetailsSchema } from "./model/types/articleDetailsSchema";
+import { getArticleDetailsData } from "./model/selectors/getArticleDetails";
 
-export { ArticleDetails, Article, ArticleDetailsSchema };
+export { ArticleDetails, Article, ArticleDetailsSchema, getArticleDetailsData };
