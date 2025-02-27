@@ -1,5 +1,9 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { Article, ArticleBlockType, ArticleType } from "entities/Article/model/types/article";
+import {
+    Article,
+    ArticleBlockType,
+    ArticleType,
+} from "entities/Article/model/types/article";
 import { StoreDecorator } from "shared/config/storybookDecorators/storeDecorator";
 import ArticleDetailsPage from "./ArticleDetailsPage";
 
@@ -21,6 +25,7 @@ const article: Article = {
     subtitle: "Что нового в JS за 2022 год?",
     img: "https://teknotower.com/wp-content/uploads/2020/11/js.png",
     views: 1022,
+    user: { id: "1", username: "evg", avatar: "" },
     createdAt: "26.02.2022",
     type: [ArticleType.IT],
     blocks: [

@@ -1,7 +1,7 @@
 import classNames from "shared/lib/classNames/classNames";
 import { memo, useCallback } from "react";
 import { ArticleDetails } from "entities/Article";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Text } from "shared/ui/Text/Text";
 import { CommentList } from "entities/Comment";
 import {
@@ -16,6 +16,8 @@ import {
 import { useInitialEffect } from "shared/lib/hooks/useInitialEffect";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch";
 import { AddCommentForm } from "features/addCommentForm";
+import { RoutePaths } from "shared/config/routeConfig/routeConfig";
+import { Button } from "shared/ui/Button/Button";
 import { addCommentForArticle } from "../../model/services/addCommentForArticle";
 import { fetchCommentsByArticleId } from "../../model/services/fetchCommentsByArticleId";
 import {
@@ -40,6 +42,8 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     const commentsIsLoading = useSelector(getArticleDetailsIsLoading);
     const commentsError = useSelector(getArticleDetailsError);
 
+    const navigate = useNavigate();
+
     useInitialEffect(() => {
         dispatch(fetchCommentsByArticleId(id));
     });
@@ -50,6 +54,10 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
         },
         [dispatch],
     );
+
+    const backToList = useCallback(() => {
+        navigate(RoutePaths.articles);
+    }, [navigate]);
 
     if (!id) {
         return (
@@ -62,6 +70,7 @@ const ArticleDetailsPage = ({ className }: ArticleDetailsPageProps) => {
     return (
         <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
             <div className={classNames(s.ArticleDetailsPage, {}, [className])}>
+                <Button onClick={backToList}>Назад к списку</Button>
                 <ArticleDetails id={id} />
                 <Text className={s.commentTitle} title="Комментарии" />
                 <AddCommentForm onSendComment={onSendComment} />
